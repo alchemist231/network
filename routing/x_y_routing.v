@@ -1,22 +1,19 @@
 `include "util/"
 `include "multiplexer/"
 
-module x_y_routing(flit, router_address, port_address, modifiedFlit);
+module x_y_routing(header, router_address, port_address, modifiedHeader);
 
-	parameter flit_size 		  = ; 
-	parameter modifiedFlit_size   = flit_size + 2;
+	parameter modifiedHeader_size = ;
 	parameter header_size 		  = ;
-	parameter message_size		  = ;
 	parameter dest_address_size   = ;
 	parameter router_address_size = ;
 
 
-	input wire [flit_size-1:0] flit;
+	input wire [header_size-1:0] header;
 	input wire [router_address_size-1:0] routerAddress;
 	input wire [1:0] port_address;
-	output wire [modifiedFlit_size-1:0] modifiedFlit;
+	output wire [modifiedHeader_size-1:0] modifiedHeader;
 
-	wire [message_size-1:0] message;
 	wire [header_size-1:0]  header;
 	wire [dest_address_size-1:0] destination_address;
 	wire x_equal, x_less, x_greater;
@@ -26,8 +23,6 @@ module x_y_routing(flit, router_address, port_address, modifiedFlit);
 	wire dir1, dir2, dir3, dir4, self;
 	wire route_direction, route;
 
-	assign message = flit[message_size-1:0];
-	assign header  = flit[flit_size-1:flit_size-header_size+1];
 
 	assign destination_address = header[dest_address_size-1:0];
 
@@ -47,6 +42,6 @@ module x_y_routing(flit, router_address, port_address, modifiedFlit);
 
 	mux_2x1_bus(route_direction, port_address, self, route)
 
-	assign modifiedFlit = {route,flit};
+	assign modifiedHeader = {route,header};
 
 endmodule
