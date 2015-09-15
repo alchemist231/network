@@ -1,7 +1,7 @@
-'include "arbitrer/"
-'include "multiplexer/"
-'include "buffer/"
-'include "detectInput/"
+`include "arbitrer/"
+`include "multiplexer/"
+`include "buffer/"
+`include "detectInput/"
 
 
 module outputPort(data1, data2, data3, data4, portBlock1, portBlock2, portBlock3, portBlock4, outputData);
