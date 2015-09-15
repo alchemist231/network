@@ -1,24 +1,26 @@
-module arbitrer(port1, port2, port3,self_injection, port1_block, port2_block, port3_block, mux_select);
+// port1 in general Self_injection
 
-	input wire port1,port2,port3,self_injection;
-	output wire port1_block,port2_block,port3_block;
+module arbitrer(port1, port2, port3, port4, port2_block, port3_block, port4_block, mux_select);
+
+	input wire port1,port2,port3,port4;
+	output wire port2_block,port3_block,port4_block;
 	output wire [1:0] mux_select;
 
-	assign port3_block = self_injection & (port3 & (port1 | port2));
-	assign port2_block = self_injection & port1 & port2;
-	assign port3_block = self_injection;
+	assign port4_block = port1 & (port4 & (port2 | port3));
+	assign port3_block = port1 & port2 & port3;
+	assign port2_block = port1;
 
-	always@(port1, port2, port3, self_injection)
+	always@(port1, port2, port3, port4)
 	begin
-		if (self_injection)
+		if (port1)
 			begin
 				mux_select <= 2'b00;
 			end
-		else if (port1)
+		else if (port2)
 			begin
 				mux_select <= 2'b01;
 			end
-		else if (port2)
+		else if (port3)
 			begin
 				mux_select <= 2'b10;
 			end
