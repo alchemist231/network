@@ -1,9 +1,9 @@
-module demultiplexerFlit_1x4(select, inputFlitBit, outputFlit1, outputFlit2, outputFlit3, outputFlit4);
+module demultiplexerFlit_1x4(select, inputFlit, outputFlit1, outputFlit2, outputFlit3, outputFlit4);
 
-	parameter flitWidth = ;
+	parameter flitWidth = 14;
 
 	input wire [1:0] select;
-	input wire [flitWidth-1:0] inputFlitBit;
+	input wire [flitWidth-1:0] inputFlit;
 	output wire [flitWidth-1:0] outputFlit1,outputFlit2,outputFlit3,outputFlit4;
 
 	genvar i ;

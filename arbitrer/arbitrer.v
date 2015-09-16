@@ -4,10 +4,10 @@ module arbitrer(port1, port2, port3, port4, port2_block, port3_block, port4_bloc
 
 	input wire port1,port2,port3,port4;
 	output wire port2_block,port3_block,port4_block;
-	output wire [1:0] mux_select;
+	output reg [1:0] mux_select;
 
-	assign port4_block = port1 & (port4 & (port2 | port3));
-	assign port3_block = port1 & port2 & port3;
+	assign port4_block = port1 | port2 | port3;
+	assign port3_block = port1 | port2;
 	assign port2_block = port1;
 
 	always@(port1, port2, port3, port4)

@@ -1,6 +1,6 @@
 module comparator(input1, input2, equal, less, greater);
 
-	parameter input_size = ;
+	parameter input_size = 2;
 
 	input wire [input_size-1:0] input1, input2;
 	output equal, greater, less;

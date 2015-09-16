@@ -1,7 +1,7 @@
 module encoder(input1, input2, input3 , input4, out);
 
 	input wire input1, input2, input3, input4;
-	output wire [1:0] out;
+	output reg [1:0] out;
 
 	always@(input1,input2,input3,input4)
 	begin

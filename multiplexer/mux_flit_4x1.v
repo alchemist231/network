@@ -1,6 +1,6 @@
 module mux_flit_4x1(flit1, flit2, flit3, flit4, select, outFlit);
 	// flit width => size of output bus
-	parameter flit_width=6;
+	parameter flit_width=12;
 
 	input wire [flit_width-1:0] flit1,flit2,flit3,flit4;
 	input wire [1:0] select; 
